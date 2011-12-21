@@ -20,6 +20,31 @@
   <%= @lead_mail.from_user_id %>
 </p>
 
+<p>
+  <b>State:</b>
+  <%= @lead_mail.state.titleize %>
+</p>
+
+<p>
+  <b>Opened:</b>
+  <%= @lead_mail.opened ? "Yes" : "No" %>
+</p>
+
+<p>
+  <b>Unsubscribed:</b>
+  <%= @lead_mail.unsubscribed ? "Yes" : "No" %>
+</p>
+
+<p>
+  <b>Marked as Spam:</b>
+  <%= @lead_mail.is_spam ? "Yes" : "No" %>
+</p>
+
+<p>
+  <b>Clicks:</b>
+  <%= simple_format(@lead_mail.clicks)%>
+</p>
+
 
 <%= link_to 'Edit', edit_lead_mail_path(@lead_mail) %> |
 <%= link_to 'Back', lead_mails_path %>

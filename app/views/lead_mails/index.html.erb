@@ -6,6 +6,7 @@
     <th>Lead</th>
     <th>Mail template</th>
     <th>From user</th>
+    <th>State</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= lead_mail.lead_id %></td>
     <td><%= lead_mail.mail_template_id %></td>
     <td><%= lead_mail.from_user_id %></td>
+    <td><%= lead_mail.state.titleize %></td>
     <td><%= link_to 'Show', lead_mail %></td>
     <td><%= link_to 'Edit', edit_lead_mail_path(lead_mail) %></td>
     <td><%= link_to 'Destroy', lead_mail, confirm: 'Are you sure?', method: :delete %></td>
