@@ -1,3 +1,5 @@
+require 'rbconfig'
+HOST_OS = RbConfig::CONFIG['host_os']
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
@@ -22,4 +24,12 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'factory_girl'
   gem 'rspec-rails'
+end
+
+gem "factory_girl_rails", ">= 1.4.0", :group => [:development, :test]
+gem "guard", ">= 0.6.2", :group => :development
+case HOST_OS
+  when /darwin/i
+    gem 'rb-fsevent', :group => :development
+    gem 'growl_notify', :group => :development
 end
