@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111219210728) do
+ActiveRecord::Schema.define(:version => 20111221154512) do
 
   create_table "lead_mails", :force => true do |t|
     t.string   "email"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20111219210728) do
     t.integer  "from_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "spam_report"
+    t.string   "state",            :default => "waiting"
+    t.boolean  "opened",           :default => false
+    t.boolean  "is_spam",          :default => false
+    t.boolean  "unsubscribed",     :default => false
+    t.text     "clicks"
   end
 
 end
