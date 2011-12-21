@@ -70,7 +70,7 @@ class HooksController < ApplicationController
   def click
     @lead_mail = LeadMail.find_by_email(@email)
     if params[:url] && @lead_mail
-      @lead_mail.clicks += "#{params[:url]}\n"
+      @lead_mail.clicks = "#{@lead_mail.clicks}#{params[:url]}\n"
       @lead_mail.save!
 
       render :nothing => true, :status => 200 and return

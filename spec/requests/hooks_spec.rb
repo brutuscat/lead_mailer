@@ -12,6 +12,11 @@ describe "Sendgrid Event API" do
       response.status.should_not be(200)
     end
 
+    it "fails if the email received does not exists" do
+      post hooks_path, {:event => :processed, :email => "emailrecipient@domain.com"}
+      response.status.should_not be(200)
+    end
+
     it "sets the correct state in a LeadMail when the email delivery status changes" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       post hooks_path, {:event => :processed, :email => @lead_mail.email}
@@ -57,7 +62,7 @@ describe "Sendgrid Event API" do
     it "updates a LeadMail when the lead clicks in a url in the message and saves the url" do
       post hooks_path, {:event => :click, :email => @lead_mail.email, :url => "http://www.example.com/"}
       response.status.should be(200)
-      LeadMail.find_by_email(@lead_mail.email).clicks.should include("http://www.example.com/")
+      LeadMail.find_by_email(@lead_mail.email).clicks.include?("http://www.example.com/").should be_true
     end
 
   end
